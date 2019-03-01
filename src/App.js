@@ -14,6 +14,14 @@ class App extends Component {
     this.setState({ what: e, arr: e.split("") });
   };
 
+  del = ind => {
+    let { arr } = this.state;
+    let newArr = [...arr];
+    newArr.splice(ind, 1);
+    let newWhat = newArr.join("");
+    this.setState({ what: newWhat, arr: newArr });
+  };
+
   render() {
     let { what, arr } = this.state;
     let whatLength = what.split("").length;
@@ -30,7 +38,7 @@ class App extends Component {
         />
 
         <VC length={whatLength} />
-        <CC arr={arr} />
+        <CC arr={arr} del={this.del} />
       </div>
     );
   }
