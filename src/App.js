@@ -6,15 +6,16 @@ import CC from "./Comp/CC";
 
 class App extends Component {
   state = {
-    what: ""
+    what: "",
+    arr: []
   };
 
   inputHandler = e => {
-    this.setState({ what: e });
+    this.setState({ what: e, arr: e.split("") });
   };
 
   render() {
-    let { what } = this.state;
+    let { what, arr } = this.state;
     let whatLength = what.split("").length;
 
     return (
@@ -29,7 +30,7 @@ class App extends Component {
         />
 
         <VC length={whatLength} />
-        <CC />
+        <CC arr={arr} />
       </div>
     );
   }
